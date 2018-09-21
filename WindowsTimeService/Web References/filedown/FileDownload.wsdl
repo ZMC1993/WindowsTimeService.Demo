@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetFileData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="APIkey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileDataResult" type="tns:FileResonse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FileResonse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="filelist" type="tns:ArrayOfFile" />
+          <s:element minOccurs="0" maxOccurs="1" name="header" type="tns:Header" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="file" nillable="true" type="tns:file" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="file">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="filedata" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Header">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apikey" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetFileDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileData" />
+  </wsdl:message>
+  <wsdl:message name="GetFileDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FileDownloadSoap">
+    <wsdl:operation name="GetFileData">
+      <wsdl:input message="tns:GetFileDataSoapIn" />
+      <wsdl:output message="tns:GetFileDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FileDownloadSoap" type="tns:FileDownloadSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFileData">
+      <soap:operation soapAction="http://tempuri.org/GetFileData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FileDownloadSoap12" type="tns:FileDownloadSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFileData">
+      <soap12:operation soapAction="http://tempuri.org/GetFileData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileDownload">
+    <wsdl:port name="FileDownloadSoap" binding="tns:FileDownloadSoap">
+      <soap:address location="http://www.sztit.cn:8090/FileDownload.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FileDownloadSoap12" binding="tns:FileDownloadSoap12">
+      <soap12:address location="http://www.sztit.cn:8090/FileDownload.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

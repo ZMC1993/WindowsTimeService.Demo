@@ -1,0 +1,9 @@
+@echo.服务正在停止......  
+@echo off  
+@net stop WindowsTimeService
+@echo.服务正在卸载......  
+@echo off 
+@cd C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727
+@sc delete WindowsTimeService
+@echo.服务卸载成功......   
+@pause

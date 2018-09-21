@@ -1,0 +1,6 @@
+E:\Workplace\测试项目\WindowsTimeService\WindowsTimeService\bin\Debug\WindowsTimeService.exe.config
+E:\Workplace\测试项目\WindowsTimeService\WindowsTimeService\bin\Debug\WindowsTimeService.exe
+E:\Workplace\测试项目\WindowsTimeService\WindowsTimeService\bin\Debug\WindowsTimeService.pdb
+E:\Workplace\测试项目\WindowsTimeService\WindowsTimeService\obj\Debug\WindowsTimeService.exe
+E:\Workplace\测试项目\WindowsTimeService\WindowsTimeService\obj\Debug\WindowsTimeService.pdb
+E:\Workplace\测试项目\WindowsTimeService\WindowsTimeService\obj\Debug\WindowsTimeService.csprojResolveAssemblyReference.cache
